@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phishing URL Detector + QR Scanner</title>
+  <script src="https://unpkg.com/html5-qrcode"></script>
+  <style>
+     * {
+      box-sizing: border-box;
+     }
+
+     body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      transition: background-color 0.3s, color 0.3s;
+     }
+
+     body.dark {
+      background-color: #121212;
+      color: #eee;
+     }
+
+     header {
+      padding: 20px;
+      text-align: center;
+      
+     }
+
+     .container {
+      max-width: 600px;
+      margin: auto;
+      padding: 20px;
+     }
+
+     h1 {
+      margin-bottom: 10px;
+     }
+
+     input[type="text"], input[type="file"] {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+     }
+
+     button {
+      width: 100%;
+      padding: 9px;
+      font-size: 16px;
+      margin-bottom: 10px;
+      border: indianred 1px solid;
+      border-radius: 50px;
+      cursor: pointer;
+   
+     }
+
+     .check-btn {
+      background-color: #6be46b;
+      color: white;
+     }
+
+     .scan-btn {
+      background-color: #17a2b8;
+      color: white;
+     }
+
+     .dark-toggle {
+      background-color: #343a40;
+      color: white;
+     }
+
+     #reader {
+      margin: 20px auto;
+      display: none;
+      width: 100%;
+      max-width: 300px;
+     }
+
+     #resultBox {
+      font-size: 18px;
+      margin-top: 15px;
+      padding: 10px;
+      border-radius: 5px;
+     }
+
+     .safe {
+      background-color: #d4edda;
+      color: #155724;
+     }
+
+     .suspicious {
+      background-color: #f8d7da;
+      color: #f30e25;
+     }
+
+     @media (max-width: 600px) {
+      .container {
+        padding: 10px;
+      }
+     }
+     </style>
+     </head>
+     <body>
+
+     <header>
+     <h1>🔐 Phishing URL Detector + QR Scanner</h1>
+     </header>
+
+     <div class="container">
+     <p>Paste a URL or Scan a QR Code:</p>
+     <input type="text" id="urlInput" placeholder="Enter or scan URL">
+     <button class="check-btn" onclick="checkURL()">Check URL</button>
+     <button class="scan-btn" onclick="toggleScanner()">📷 Start Camera Scan</button>
+     <input type="file" accept="image/*" onchange="scanFromFile(this)">
+     <button class="dark-toggle" onclick="toggleDarkMode()">🌓 Toggle Dark Mode</button>
+
+     <div id="reader"></div>
+     <div id="resultBox"></div>
+     </div>
+
+     <script src="script.js"></script>
+</body>
+</html>
